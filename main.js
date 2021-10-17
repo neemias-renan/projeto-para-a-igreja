@@ -1,50 +1,18 @@
-
+import { obterEntradasFinanceiras } from './dados.js';
 var quantidadeofertas = 0
 var valorofertas = 0.00
+
+obterEntradasFinanceiras()
+
 function atualizardados(){
-    // Dados Gerais
-    endereco = document.getElementById("endereco").value
-    numero = document.getElementById("numero").value
-    mes = document.getElementById("mes").value
-    bairro = document.getElementById("bairro").value
-    cidade = document.getElementById("cidade").value
-    cep = document.getElementById("cep").value
-    // informações estatísticas
-    membros = document.getElementById("membros").value
-    congregados = document.getElementById("congregados").value
-    criancas = document.getElementById("criancas").value
-    // Entradas Financeiras
-    saldoanterior = parseFloat(document.getElementById("saldoanterior").value)
-    emprestimocredor = parseFloat(document.getElementById("emprestimocredor").value)
-    recursosdaigrejasede = parseFloat(document.getElementById("recursosdaigrejasede").value)
-    recursosdocrrn = parseFloat(document.getElementById("recursosdocrrn").value)
-    ofertademissoes = parseFloat(document.getElementById("ofertademissoes").value)
+
     valorentradas = saldoanterior+emprestimocredor+recursosdaigrejasede+recursosdocrrn+ofertademissoes+valorofertas
     inputofertas = document.getElementById('ofertas').value=valorofertas.toFixed(2)
 
 
     valortotaldeentradas = document.getElementById("valortotaldeentradas").innerHTML = valorentradas.toFixed(2)
 
-
-    // Saída Operacional Administrativa
-    alugueldotemplo = document.getElementById("alugueldotemplo").value
-    concessionarias = document.getElementById("concessionarias").value
-    empregados = document.getElementById("empregados").value
-    imposto = document.getElementById("imposto").value
-    assistenciasocial = document.getElementById("assistenciasocial").value
-    acoesevangelisticas = document.getElementById("acoesevangelisticas").value
-    manutencao = document.getElementById("manutencao").value
-    emprestimos = document.getElementById("emprestimos").value
-    aquisicaodeativos = document.getElementById("aquisicaodeativos").value
-    contribuicaoparaobarco = document.getElementById("contribuicaoparaobarco").value
-    remessaparaasede = document.getElementById("remessaparaasede")
-    outros = document.getElementById("outros").value
-    ofertasdemissoes = document.getElementById("ofertasdemissoes").value
-    prebenda = document.getElementById("prebenda").value
-    previdencia = document.getElementById("previdencia").value
-    verbacomplementar = document.getElementById("verbacomplementar").value
 }
-
 
 function abrirjanelaoferta(){
     document.getElementById("janelaoferta").style.display = "block";
@@ -59,7 +27,6 @@ function abrirjaneladizimo(){
 function fecharjaneladizimo(){
     document.getElementById("janeladizimo").style.display = "none";
 }
-
 
 function adicionaroferta(){ 
     valordaoferta = parseFloat(document.getElementById("valordaoferta").value)
