@@ -10,34 +10,14 @@ function atualizardados(){
 
 function adicionaroferta(){ 
     valordaoferta = parseFloat(document.getElementById("valordaoferta").value).toFixed(2)
-    elementoli = document.createElement("li")
-    atributoidli = document.createAttribute("id")
-    atributoidli.value = "li"+parseInt(quantidadeofertas)
-    elementoli.setAttributeNode(atributoidli)
 
-
-    elementodiv = document.createElement("div")
-    atributoiddiv = document.createAttribute("id")
-    atributoiddiv.value = "div"+parseInt(quantidadeofertas)
-    elementodiv.setAttributeNode(atributoiddiv)
-
-    elementobotao = document.createElement("input")
-    atributoonclickbotao = document.createAttribute("onclick")
-    atributoonclickbotao.value="removeroferta('li"+parseInt(quantidadeofertas)+"')"
-    atributotypebotao = document.createAttribute("type")
-    atributotypebotao.value="button"
-    atributoidbotao = document.createAttribute("id")
-    atributoidbotao.value = "botao"+parseInt(quantidadeofertas)
-    elementobotao.setAttributeNode(atributoonclickbotao)
-    elementobotao.setAttributeNode(atributotypebotao)
-    elementobotao.setAttributeNode(atributoidbotao)
-
-    elementoh5 = document.createElement("h5")
-    atributoidh5 = document.createAttribute("id")
-    atributoidh5.value = "li"+parseInt(quantidadeofertas)+"h5"
-    elementoh5.setAttributeNode(atributoidh5)
-
+    // Criação dos elementos - tags
+    li = criarLI()
+    div = criarDIV()
+    button = criarBUTTON()
+    h5 = criarH5()
     texto = document.createTextNode(valordaoferta)
+
 
     elementoh5.appendChild(texto)
     elementodiv.appendChild(elementobotao)
@@ -45,10 +25,15 @@ function adicionaroferta(){
     elementoli.appendChild(elementodiv)
 
     document.getElementById("listadeofertas").appendChild(elementoli)
+
     valorofertas = parseFloat(valorofertas)+parseFloat(valordaoferta)
+    
     quantidadeofertas = parseInt(quantidadeofertas)+1
+
     atualizardados()
 }
+
+
 
 function removeroferta(liId){
     valorpararemover = document.getElementById(liId+"h5").innerText
@@ -60,7 +45,42 @@ function removeroferta(liId){
 }
 
 
+// Funções para criação dos elementos
 
+function criarLI(){
+    // Criação da li com os atributos
+    elementoli = document.createElement("li")
+    atributoidli = document.createAttribute("id")
+    atributoidli.value = "li"+parseInt(quantidadeofertas)
+    elementoli.setAttributeNode(atributoidli)
+}
+function criarDIV(){
+    // Criação da div com os atributos
+    elementodiv = document.createElement("div")
+    atributoiddiv = document.createAttribute("id")
+    atributoiddiv.value = "div"+parseInt(quantidadeofertas)
+    elementodiv.setAttributeNode(atributoiddiv)
+}
+function criarBUTTON(){
+    // Criação do button com os atributos
+    elementobotao = document.createElement("input")
+    atributoonclickbotao = document.createAttribute("onclick")
+    atributoonclickbotao.value="removeroferta('li"+parseInt(quantidadeofertas)+"')"
+    atributotypebotao = document.createAttribute("type")
+    atributotypebotao.value="button"
+    atributoidbotao = document.createAttribute("id")
+    atributoidbotao.value = "botao"+parseInt(quantidadeofertas)
+    elementobotao.setAttributeNode(atributoonclickbotao)
+    elementobotao.setAttributeNode(atributotypebotao)
+    elementobotao.setAttributeNode(atributoidbotao)
+}
+function criarH5(){
+    // Criação da h5 com os atributos
+    elementoh5 = document.createElement("h5")
+    atributoidh5 = document.createAttribute("id")
+    atributoidh5.value = "li"+parseInt(quantidadeofertas)+"h5"
+    elementoh5.setAttributeNode(atributoidh5)
+}
 
 
 
