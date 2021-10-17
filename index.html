@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>MEPB - Financeiro</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <form action="">
+        <fieldset>
+            <legend><h2>Relatório Estatísto Financeiro</h2></legend>
+            <div>
+                <input type="radio" name="tipo_de_ajuntamento" id="igreja" value="igreja">
+                <label for="tipo_de_ajuntamento">Igreja</label>
+
+                <input type="radio" name="tipo_de_ajuntamento" id="congregracao" value="congregracao">
+                <label for="tipo_de_ajuntamento">Congregação</label>
+
+                <input type="radio" name="tipo_de_ajuntamento" id="pontodepregacao" value="pontodepregacao">
+                <label for="tipo_de_ajuntamento">Ponto de Pregação</label>
+            </div>
+
+            <div>
+                <div>
+                    <label for="endereco">Endereço</label>
+                    <input type="text" name="endereco" id="endereco">
+                </div>
+
+                <div>
+                    <label for="numero">Número</label>
+                    <input type="text" name="numero" id="numero">
+                </div>
+
+                <div>
+                    <label for="mes">Mês</label>
+                    <input type="text" name="mes" id="mes">
+                </div>
+
+                <div>
+                    <label for="bairro">Bairro</label>
+                    <input type="text" name="bairro" id="bairro">
+                </div>
+
+                <div>
+                    <label for="cidade">Cidade</label>
+                    <input type="text" name="cidade" id="cidade">
+                </div>
+
+                <div>
+                    <label for="cep">CEP</label>
+                    <input type="text" name="cep" id="cep">
+                </div>
+            </div>            
+        </fieldset>
+        
+        <fieldset>
+            <legend><h2>Informações Estatísticas</h2></legend>
+
+            <div>
+                <div>
+                    <label for="membros">Membros</label>
+                    <input type="text" name="membros" id="membros">
+                </div>
+
+                <div>
+                    <label for="congregados">Congregados</label>
+                    <input type="text" name="congregados" id="congregados">
+                </div>
+
+                <div>
+                    <label for="criancas">Crianças</label>
+                    <input type="text" name="criancas" id="criancas">
+                </div>
+            </div>
+        </fieldset>
+<!-- Entradas -->
+        <fieldset>
+            <legend><h2>Informações de Entradas Financeiras</h2></legend>
+            <div>
+                <div>
+                    <label for="saldoanterior">Saldo(Mês Anterior)</label>
+                    <input type="text" name="saldoanterior" id="saldoanterior"onkeyup="atualizardados()">
+                </div>
+
+                <div>
+                    <label for="emprestimocredor">Empréstimo Credor</label>
+                    <input type="text" name="emprestimocredor" id="emprestimocredor"  onkeyup="atualizardados()">
+                </div>
+
+                <div>
+                    <label for="recursosdaigrejasede">Recursos Recebidos da Igreja Sede</label>
+                    <input type="text" name="recursosdaigrejasede" id="recursosdaigrejasede" onkeyup="atualizardados()">
+                </div>
+
+                <div>
+                    <label for="recursosdocrrn">Recursos Recebidos do CRRN</label>
+                    <input type="text" name="recursosdocrrn" id="recursosdocrrn"onkeyup="atualizardados()">
+                </div>
+
+                <div>
+                    <label for="ofertademissoes">Oferta de Missões</label>
+                    <input type="text" name="ofertademissoes" id="ofertademissoes"onkeyup="atualizardados()">
+                </div>
+
+                <div>
+                    <label for="dizimo">Dizimos</label>
+                    <input type="text" name="dizimo" id="dizimo" disabled>
+                </div>
+
+                <div>
+                    <label for="ofertas">Ofertas</label>
+                    <input type="text" name="ofertas" id="ofertas" disabled>
+                </div>
+
+                <div>
+                    <input type="button" onclick="abrirjanelaoferta()" value="Adicionar Oferta">
+                    <input type="button" onclick="abrirjaneladizimo()" value="Adicionar Dízimo">
+                </div>
+            </div>
+
+            <h4>Total de Entradas foi de <span id="valortotaldeentradas">X</span> reais.</h4>
+        </fieldset>
+        <!-- Adicionar Oferta -->
+        <fieldset id="janelaoferta" style="display:none">
+            <legend><h2>Adicionar Oferta</h2></legend>
+
+            <div>
+                <ul id="listadeofertas">
+            
+                </ul>
+            </div>
+
+            <div>
+                <label for="valordaoferta">Valor da oferta</label>
+                <input type="text" name="valordaoferta" id="valordaoferta">
+                <input type="button" value="Adicionar" onclick="adicionaroferta()">
+                <input type="button" value="x" onclick="fecharjanelaoferta()">
+            </div>
+        </fieldset>
+
+         <!-- Adicionar Dízimo -->
+         <fieldset id="janeladizimo" style="display:none">
+            <legend><h2>Adicionar Dízimos</h2></legend>
+
+            <div>
+                <ul id="listadedizimos">
+            
+                </ul>
+            </div>
+
+            <div>
+                <label for="valordodizimo">Valor do Dízimo</label>
+                <input type="text" name="valordodizimo" id="valordodizimo">
+                <input type="button" value="Adicionar" onclick="adicionardizimo()">
+                <input type="button" value="x" onclick="fecharjaneladizimo()">
+            </div>
+        </fieldset>
+
+<!-- Saidas -->
+        <fieldset>
+            <legend><h2>Saída Operacional Administrativa</h2></legend>
+            <div>
+                <div>
+                    <label for="alugueldotemplo">Aluguel do Templo</label>
+                    <input type="text" name="alugueldotemplo" id="alugueldotemplo">
+                </div>
+
+                <div>
+                    <label for="concessionarias">Concessionárias (Água, Energia, Telefone, Internet, Seg. Eletrônica)</label>
+                    <input type="text" name="concessionarias" id="concessionarias">
+                </div>
+
+                <div>
+                    <label for="empregados">Empregados/Mão de Obra contratada</label>
+                    <input type="text" name="empregados" id="empregados">
+                </div>
+
+                <div>
+                    <label for="imposto">Imposto, Taxa e Contribuições</label>
+                    <input type="text" name="imposto" id="imposto">
+                </div>
+
+                <div>
+                    <label for="assistenciasocial">Assistência Social</label>
+                    <input type="text" name="assistenciasocial" id="assistenciasocial">
+                </div>
+
+                <div>
+                    <label for="acoesevangelisticas">Ações Evangelísticas</label>
+                    <input type="text" name="acoesevangelisticas" id="acoesevangelisticas">
+                </div>
+
+                <div>
+                    <label for="manutencao">Manutenção</label>
+                    <input type="text" name="manutencao" id="manutencao">
+                </div>
+
+                <div>
+                    <label for="emprestimos">Empréstimo - Credor</label>
+                    <input type="text" name="emprestimos" id="emprestimos">
+                </div>
+
+                <div>
+                    <label for="aquisicaodeativos">Aquisição de Ativos</label>
+                    <input type="text" name="aquisicaodeativos" id="aquisicaodeativos">
+                </div>
+
+                <div>
+                    <label for="contribuicaoparaobarco">Contribuição para o Barco</label>
+                    <input type="text" name="contribuicaoparaobarco" id="contribuicaoparaobarco">
+                </div>
+
+                <div>
+                    <label for="remessaparaasede">Remessa para a Igreja Sede</label>
+                    <input type="text" name="remessaparaasede" id="remessaparaasede">
+                </div>
+
+                <div>
+                    <label for="outros">Outros</label>
+                    <input type="text" name="outros" id="outros">
+                </div>
+
+                <div>
+                    <label for="ofertasdemissoes">Ofertas de Missões</label>
+                    <input type="text" name="ofertasdemissoes" id="ofertasdemissoes">
+                </div>
+
+                <div>
+                    <label for="prebenda">Prebenda</label>
+                    <input type="text" name="prebenda" id="prebenda">
+                </div>
+
+                <div>
+                    <label for="previdencia">Previdência</label>
+                    <input type="text" name="previdencia" id="previdencia">
+                </div>
+
+                <div>
+                    <label for="verbacomplementar">Verba Complementar</label>
+                    <input type="text" name="verbacomplementar" id="verbacomplementar" onkeypress="imprimir()">
+                </div>               
+            </div>
+        </fieldset>
+<!-- Resultados gerais -->
+        <fieldset>
+            <legend><h2>Saldo Financeiro</h2></legend>
+
+            <div>
+                <label for="totaldasentradas">Total das Entradas</label>
+                <input type="text" name="totaldasentradas" id="" disabled>
+            </div>
+
+            <div>
+                <label for="totaldesaidas">Total de Saídas</label>
+                <input type="text" name="totaldesaidas" id="" disabled>
+            </div>
+
+            <div>
+                <label for="saldofinanceiro">Saldo Financeiro Para o Próximo Mês</label>
+                <input type="text" name="dizimo" id="" disabled>
+            </div>
+        </fieldset>
+
+        <div>
+            <input type="button" onclick="atualizardados()" value="Imprimir">
+        </div>
+    </form>
+</body>
+</html>
