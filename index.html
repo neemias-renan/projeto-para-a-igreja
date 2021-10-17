@@ -5,7 +5,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>MEPB - Financeiro</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <script type="module" src='main.js'></script>
+    <script src='main.js'></script>
     <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'> -->
 </head>
 <body>
@@ -82,37 +82,37 @@
             <div>
                 <div>
                     <label for="saldoanterior">Saldo(Mês Anterior)</label>
-                    <input type="text" name="saldoanterior" id="saldoanterior"onkeyup="atualizardados()">
+                    <input type="number" name="saldoanterior" id="saldoanterior"onkeyup="atualizardados()" placeholder="0.00">
                 </div>
 
                 <div>
                     <label for="emprestimocredor">Empréstimo Credor</label>
-                    <input type="text" name="emprestimocredor" id="emprestimocredor"  onkeyup="atualizardados()">
+                    <input type="number" name="emprestimocredor" id="emprestimocredor"  onkeyup="atualizardados()" placeholder="0.00">
                 </div>
 
                 <div>
                     <label for="recursosdaigrejasede">Recursos Recebidos da Igreja Sede</label>
-                    <input type="text" name="recursosdaigrejasede" id="recursosdaigrejasede" onkeyup="atualizardados()">
+                    <input type="number" name="recursosdaigrejasede" id="recursosdaigrejasede" onkeyup="atualizardados()" placeholder="0.00">
                 </div>
 
                 <div>
                     <label for="recursosdocrrn">Recursos Recebidos do CRRN</label>
-                    <input type="text" name="recursosdocrrn" id="recursosdocrrn"onkeyup="atualizardados()">
+                    <input type="number" name="recursosdocrrn" id="recursosdocrrn"onkeyup="atualizardados()" placeholder="0.00">
                 </div>
 
                 <div>
                     <label for="ofertademissoes">Oferta de Missões</label>
-                    <input type="text" name="ofertademissoes" id="ofertademissoes"onkeyup="atualizardados()">
+                    <input type="number" name="ofertademissoes" id="ofertademissoes"onkeyup="atualizardados()" placeholder="0.00">
                 </div>
 
                 <div>
                     <label for="dizimo">Dizimos</label>
-                    <input type="text" name="dizimo" id="dizimo" disabled>
+                    <input type="number" name="dizimo" id="dizimo" disabled placeholder="0.00">
                 </div>
 
                 <div>
                     <label for="ofertas">Ofertas</label>
-                    <input type="text" name="ofertas" id="ofertas" disabled>
+                    <input type="number" name="ofertas" id="ofertas" disabled placeholder="0.00">
                 </div>
 
                 <div>
@@ -268,7 +268,5 @@
             <input type="button" onclick="atualizardados()" value="Imprimir">
         </div>
     </form>
-    
-    <!-- <script type="module" src='dados.js'></script> -->
 </body>
 </html>

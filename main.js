@@ -1,36 +1,15 @@
-import { obterEntradasFinanceiras } from './dados.js';
 var quantidadeofertas = 0
 var valorofertas = 0.00
 
-obterEntradasFinanceiras()
-
 function atualizardados(){
-
-    valorentradas = saldoanterior+emprestimocredor+recursosdaigrejasede+recursosdocrrn+ofertademissoes+valorofertas
-    inputofertas = document.getElementById('ofertas').value=valorofertas.toFixed(2)
-
-
-    valortotaldeentradas = document.getElementById("valortotaldeentradas").innerHTML = valorentradas.toFixed(2)
-
-}
-
-function abrirjanelaoferta(){
-    document.getElementById("janelaoferta").style.display = "block";
-}
-function fecharjanelaoferta(){
-    document.getElementById("janelaoferta").style.display = "none";
-}
-
-function abrirjaneladizimo(){
-    document.getElementById("janeladizimo").style.display = "block";
-}
-function fecharjaneladizimo(){
-    document.getElementById("janeladizimo").style.display = "none";
+    obterDadosGerais()
+    obterEntradasFinanceiras()
+    obterInformacoesEstatisticas()
+    obterSaidasOperacionaisAdm()
 }
 
 function adicionaroferta(){ 
-    valordaoferta = parseFloat(document.getElementById("valordaoferta").value)
-    valordaoferta = valordaoferta.toFixed(2)
+    valordaoferta = parseFloat(document.getElementById("valordaoferta").value).toFixed(2)
     elementoli = document.createElement("li")
     atributoidli = document.createAttribute("id")
     atributoidli.value = "li"+parseInt(quantidadeofertas)
@@ -80,8 +59,13 @@ function removeroferta(liId){
     elemento.remove();
 }
 
-// Funções de obtenção de dados
 
+
+
+
+
+
+// Funções de obtenção de dados
 function obterDadosGerais(){
     // Dados Gerais
     endereco = document.getElementById("endereco").value
@@ -90,25 +74,40 @@ function obterDadosGerais(){
     bairro = document.getElementById("bairro").value
     cidade = document.getElementById("cidade").value
     cep = document.getElementById("cep").value
-    console.log('ok')
-}
 
+}
 function obterInformacoesEstatisticas(){
     // Informações Estatísticas
     membros = document.getElementById("membros").value
     congregados = document.getElementById("congregados").value
     criancas = document.getElementById("criancas").value
 }
-
 function obterEntradasFinanceiras(){
     // Entradas Financeiras
-    saldoanterior = parseFloat(document.getElementById("saldoanterior").value)
-    emprestimocredor = parseFloat(document.getElementById("emprestimocredor").value)
-    recursosdaigrejasede = parseFloat(document.getElementById("recursosdaigrejasede").value)
-    recursosdocrrn = parseFloat(document.getElementById("recursosdocrrn").value)
-    ofertademissoes = parseFloat(document.getElementById("ofertademissoes").value)
-}
+    saldoanterior = document.getElementById("saldoanterior").value
+    emprestimocredor = document.getElementById("emprestimocredor").value
+    recursosdaigrejasede = document.getElementById("recursosdaigrejasede").value
+    recursosdocrrn = document.getElementById("recursosdocrrn").value
+    ofertademissoes = document.getElementById("ofertademissoes").value
+    
+    if(saldoanterior == ""){saldoanterior=0}
+    if(emprestimocredor == ""){emprestimocredor=0}
+    if(recursosdaigrejasede == ""){recursosdaigrejasede=0}
+    if(recursosdocrrn == ""){recursosdocrrn=0}
+    if(ofertademissoes == ""){ofertademissoes=0}
 
+    saldoanterior = parseFloat(saldoanterior)
+    emprestimocredor = parseFloat(emprestimocredor)
+    recursosdaigrejasede = parseFloat(recursosdaigrejasede)
+    recursosdocrrn = parseFloat(recursosdocrrn)
+    ofertademissoes = parseFloat(ofertademissoes)
+
+    somadasentradas = saldoanterior+emprestimocredor+recursosdaigrejasede+recursosdocrrn+ofertademissoes+valorofertas
+    inputofertas = document.getElementById('ofertas').value=valorofertas.toFixed(2)
+    valortotaldeentradas = document.getElementById("valortotaldeentradas").innerHTML = somadasentradas.toFixed(2)
+
+    return saldoanterior,emprestimocredor,recursosdaigrejasede,recursosdocrrn,ofertademissoes,inputofertas
+}
 function obterSaidasOperacionaisAdm(){
     // Saída Operacional Administrativa
     alugueldotemplo = document.getElementById("alugueldotemplo").value
@@ -131,3 +130,17 @@ function obterSaidasOperacionaisAdm(){
 
 
 
+// Funções para os Botões
+function abrirjanelaoferta(){
+    document.getElementById("janelaoferta").style.display = "block";
+}
+function fecharjanelaoferta(){
+    document.getElementById("janelaoferta").style.display = "none";
+}
+
+function abrirjaneladizimo(){
+    document.getElementById("janeladizimo").style.display = "block";
+}
+function fecharjaneladizimo(){
+    document.getElementById("janeladizimo").style.display = "none";
+}
