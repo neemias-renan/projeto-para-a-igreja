@@ -165,83 +165,85 @@
             <div>
                 <div>
                     <label for="alugueldotemplo">Aluguel do Templo</label>
-                    <input type="number" name="alugueldotemplo" id="alugueldotemplo">
+                    <input type="number" name="alugueldotemplo" id="alugueldotemplo" onkeyup="atualizardados()" placeholder="0.00">
                 </div>
 
                 <div>
                     <label for="concessionarias">Concessionárias (Água, Energia, Telefone, Internet, Seg. Eletrônica)</label>
-                    <input type="number" name="concessionarias" id="concessionarias">
+                    <input type="number" name="concessionarias" id="concessionarias" onkeyup="atualizardados()" placeholder="0.00">
                 </div>
 
                 <div>
                     <label for="empregados">Empregados/Mão de Obra contratada</label>
-                    <input type="number" name="empregados" id="empregados">
+                    <input type="number" name="empregados" id="empregados" onkeyup="atualizardados()" placeholder="0.00">
                 </div>
 
                 <div>
                     <label for="imposto">Imposto, Taxa e Contribuições</label>
-                    <input type="number" name="imposto" id="imposto">
+                    <input type="number" name="imposto" id="imposto" onkeyup="atualizardados()" placeholder="0.00">
                 </div>
 
                 <div>
                     <label for="assistenciasocial">Assistência Social</label>
-                    <input type="number" name="assistenciasocial" id="assistenciasocial">
+                    <input type="number" name="assistenciasocial" id="assistenciasocial" onkeyup="atualizardados()" placeholder="0.00">
                 </div>
 
                 <div>
                     <label for="acoesevangelisticas">Ações Evangelísticas</label>
-                    <input type="number" name="acoesevangelisticas" id="acoesevangelisticas">
+                    <input type="number" name="acoesevangelisticas" id="acoesevangelisticas" onkeyup="atualizardados()" placeholder="0.00">
                 </div>
 
                 <div>
                     <label for="manutencao">Manutenção</label>
-                    <input type="number" name="manutencao" id="manutencao">
+                    <input type="number" name="manutencao" id="manutencao" onkeyup="atualizardados()" placeholder="0.00">
                 </div>
 
                 <div>
                     <label for="emprestimos">Empréstimo - Credor</label>
-                    <input type="number" name="emprestimos" id="emprestimos">
+                    <input type="number" name="emprestimos" id="emprestimos" onkeyup="atualizardados()" placeholder="0.00">
                 </div>
 
                 <div>
                     <label for="aquisicaodeativos">Aquisição de Ativos</label>
-                    <input type="number" name="aquisicaodeativos" id="aquisicaodeativos">
+                    <input type="number" name="aquisicaodeativos" id="aquisicaodeativos" onkeyup="atualizardados()" placeholder="0.00">
                 </div>
 
                 <div>
                     <label for="contribuicaoparaobarco">Contribuição para o Barco</label>
-                    <input type="number" name="contribuicaoparaobarco" id="contribuicaoparaobarco">
+                    <input type="number" name="contribuicaoparaobarco" id="contribuicaoparaobarco" onkeyup="atualizardados()" placeholder="0.00">
                 </div>
 
                 <div>
                     <label for="remessaparaasede">Remessa para a Igreja Sede</label>
-                    <input type="number" name="remessaparaasede" id="remessaparaasede">
+                    <input type="number" name="remessaparaasede" id="remessaparaasede" onkeyup="atualizardados()" placeholder="0.00">
                 </div>
 
                 <div>
                     <label for="outros">Outros</label>
-                    <input type="number" name="outros" id="outros">
+                    <input type="number" name="outros" id="outros" onkeyup="atualizardados()" placeholder="0.00">
                 </div>
 
                 <div>
                     <label for="ofertasdemissoes">Ofertas de Missões</label>
-                    <input type="number" name="ofertasdemissoes" id="ofertasdemissoes">
+                    <input type="number" name="ofertasdemissoes" id="ofertasdemissoes" onkeyup="atualizardados()" placeholder="0.00">
                 </div>
 
                 <div>
                     <label for="prebenda">Prebenda</label>
-                    <input type="number" name="prebenda" id="prebenda">
+                    <input type="number" name="prebenda" id="prebenda" onkeyup="atualizardados()" placeholder="0.00">
                 </div>
 
                 <div>
                     <label for="previdencia">Previdência</label>
-                    <input type="number" name="previdencia" id="previdencia">
+                    <input type="number" name="previdencia" id="previdencia" onkeyup="atualizardados()" placeholder="0.00">
                 </div>
 
                 <div>
                     <label for="verbacomplementar">Verba Complementar</label>
-                    <input type="number" name="verbacomplementar" id="verbacomplementar" onkeypress="imprimir()">
+                    <input type="number" name="verbacomplementar" id="verbacomplementar" onkeyup="atualizardados()" placeholder="0.00">
                 </div>               
+
+                <h4>Total de Saídas foi de <span id="valortotaldesaidas">0.00</span> reais.</h4>
             </div>
         </fieldset>
 <!-- Resultados gerais -->
@@ -250,17 +252,17 @@
 
             <div>
                 <label for="totaldasentradas">Total das Entradas</label>
-                <input type="text" name="totaldasentradas" id="" disabled>
+                <input type="text" name="totaldasentradas" id="totaldasentradas" disabled placeholder="0.00">
             </div>
 
             <div>
                 <label for="totaldesaidas">Total de Saídas</label>
-                <input type="text" name="totaldesaidas" id="" disabled>
+                <input type="text" name="totaldassaidas" id="totaldassaidas" disabled placeholder="0.00">
             </div>
 
             <div>
                 <label for="saldofinanceiro">Saldo Financeiro Para o Próximo Mês</label>
-                <input type="text" name="dizimo" id="" disabled>
+                <input type="text" name="saldofinanceiro" id="saldofinanceiro" disabled placeholder="0.00">
             </div>
         </fieldset>
 

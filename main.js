@@ -3,27 +3,19 @@ var quantidadedizimos = 0
 var valorofertas = 0.00
 var valordizimos = 0.00
 
+var entradas = 0.00
+var saidas = 0.00
+
 
 function atualizardados(){
     obterDadosGerais()
-    obterEntradasFinanceiras()
     obterInformacoesEstatisticas()
+    obterEntradasFinanceiras()
     obterSaidasOperacionaisAdm()
+
+    var saldofinanceiroposterior = parseFloat(entradas)-parseFloat(saidas)  
+    document.getElementById("saldofinanceiro").value= saldofinanceiroposterior.toFixed(2)
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Ofertas
 function adicionaroferta(){ 
@@ -166,12 +158,14 @@ function obterEntradasFinanceiras(){
     recursosdocrrn = parseFloat(recursosdocrrn)
     ofertademissoes = parseFloat(ofertademissoes)
 
-    somadasentradas = saldoanterior+emprestimocredor+recursosdaigrejasede+recursosdocrrn+ofertademissoes+valorofertas+valordizimos
+    somadeentradas = saldoanterior+emprestimocredor+recursosdaigrejasede+recursosdocrrn+ofertademissoes+valorofertas+valordizimos
     inputofertas = document.getElementById('ofertas').value=valorofertas.toFixed(2)
     inputdizimos = document.getElementById('dizimos').value=valordizimos.toFixed(2)
-    valortotaldeentradas = document.getElementById("valortotaldeentradas").innerHTML = somadasentradas.toFixed(2)
+    valortotaldeentradas = document.getElementById("valortotaldeentradas").innerHTML = somadeentradas.toFixed(2)
+    
+    document.getElementById("totaldasentradas").value = somadeentradas.toFixed(2)
 
-    return saldoanterior,emprestimocredor,recursosdaigrejasede,recursosdocrrn,ofertademissoes,inputofertas,inputdizimos
+    entradas = somadeentradas
 }
 function obterSaidasOperacionaisAdm(){
     // Saída Operacional Administrativa
@@ -185,12 +179,52 @@ function obterSaidasOperacionaisAdm(){
     emprestimos = document.getElementById("emprestimos").value
     aquisicaodeativos = document.getElementById("aquisicaodeativos").value
     contribuicaoparaobarco = document.getElementById("contribuicaoparaobarco").value
-    remessaparaasede = document.getElementById("remessaparaasede")
+    remessaparaasede = document.getElementById("remessaparaasede").value
     outros = document.getElementById("outros").value
     ofertasdemissoes = document.getElementById("ofertasdemissoes").value
     prebenda = document.getElementById("prebenda").value
     previdencia = document.getElementById("previdencia").value
-    verbacomplementar = document.getElementById("verbacomplementar").value    
+    verbacomplementar = document.getElementById("verbacomplementar").value
+
+    if(alugueldotemplo==""){alugueldotemplo=0}
+    if(concessionarias==""){concessionarias=0}
+    if(empregados==""){empregados=0}
+    if(imposto==""){imposto=0}
+    if(assistenciasocial==""){assistenciasocial=0}
+    if(acoesevangelisticas==""){acoesevangelisticas=0}
+    if(manutencao==""){manutencao=0}
+    if(emprestimos==""){emprestimos=0}
+    if(aquisicaodeativos==""){aquisicaodeativos=0}
+    if(contribuicaoparaobarco==""){contribuicaoparaobarco=0}
+    if(remessaparaasede==""){remessaparaasede=0}
+    if(outros==""){outros=0}
+    if(ofertasdemissoes==""){ofertasdemissoes=0}
+    if(prebenda==""){prebenda=0}
+    if(previdencia==""){previdencia=0}
+    if(verbacomplementar==""){verbacomplementar=0}
+
+    alugueldotemplo = parseFloat(alugueldotemplo)
+    concessionarias = parseFloat(concessionarias)
+    empregados = parseFloat(empregados)
+    imposto = parseFloat(imposto)
+    assistenciasocial = parseFloat(assistenciasocial)
+    acoesevangelisticas = parseFloat(acoesevangelisticas)
+    manutencao = parseFloat(manutencao)
+    emprestimos = parseFloat(emprestimos)
+    aquisicaodeativos = parseFloat(aquisicaodeativos)
+    contribuicaoparaobarco = parseFloat(contribuicaoparaobarco)
+    remessaparaasede = parseFloat(remessaparaasede)
+    outros = parseFloat(outros)
+    ofertasdemissoes = parseFloat(ofertasdemissoes)
+    prebenda = parseFloat(prebenda)
+    previdencia = parseFloat(previdencia)
+    verbacomplementar = parseFloat(verbacomplementar)
+
+    somadesaidas = alugueldotemplo+concessionarias+empregados+imposto+assistenciasocial+acoesevangelisticas+manutencao+emprestimos+aquisicaodeativos+contribuicaoparaobarco+remessaparaasede+outros+ofertasdemissoes+prebenda+previdencia+verbacomplementar
+
+    valortotaldesaidas = document.getElementById("valortotaldesaidas").innerHTML = somadesaidas.toFixed(2)
+    document.getElementById("totaldassaidas").value = somadesaidas.toFixed(2)
+    saidas = somadesaidas
 }
 
 // Funções para os Botões
