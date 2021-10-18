@@ -107,7 +107,7 @@
 
                 <div>
                     <label for="dizimo">Dizimos</label>
-                    <input type="number" name="dizimo" id="dizimo" disabled placeholder="0.00">
+                    <input type="number" name="dizimo" id="dizimos" disabled placeholder="0.00">
                 </div>
 
                 <div>
@@ -116,12 +116,12 @@
                 </div>
 
                 <div>
-                    <input type="button" onclick="abrirjanelaoferta()" value="Adicionar Oferta">
-                    <input type="button" onclick="abrirjaneladizimo()" value="Adicionar Dízimo">
+                    <input type="button" onclick="abrirjanelaoferta()" value="Editar Ofertas">
+                    <input type="button" onclick="abrirjaneladizimo()" value="Editar Dízimos">
                 </div>
             </div>
 
-            <h4>Total de Entradas foi de <span id="valortotaldeentradas">X</span> reais.</h4>
+            <h4>Total de Entradas foi de <span id="valortotaldeentradas">0.00</span> reais.</h4>
         </fieldset>
         <!-- Adicionar Oferta -->
         <fieldset id="janelaoferta" style="display:none">
@@ -135,7 +135,7 @@
 
             <div>
                 <label for="valordaoferta">Valor da oferta</label>
-                <input type="text" name="valordaoferta" id="valordaoferta">
+                <input type="number" name="valordaoferta" id="valordaoferta">
                 <input type="button" value="Adicionar" onclick="adicionaroferta()">
                 <input type="button" value="x" onclick="fecharjanelaoferta()">
             </div>
@@ -153,7 +153,7 @@
 
             <div>
                 <label for="valordodizimo">Valor do Dízimo</label>
-                <input type="text" name="valordodizimo" id="valordodizimo">
+                <input type="number" name="valordodizimo" id="valordodizimo">
                 <input type="button" value="Adicionar" onclick="adicionardizimo()">
                 <input type="button" value="x" onclick="fecharjaneladizimo()">
             </div>
@@ -165,82 +165,82 @@
             <div>
                 <div>
                     <label for="alugueldotemplo">Aluguel do Templo</label>
-                    <input type="text" name="alugueldotemplo" id="alugueldotemplo">
+                    <input type="number" name="alugueldotemplo" id="alugueldotemplo">
                 </div>
 
                 <div>
                     <label for="concessionarias">Concessionárias (Água, Energia, Telefone, Internet, Seg. Eletrônica)</label>
-                    <input type="text" name="concessionarias" id="concessionarias">
+                    <input type="number" name="concessionarias" id="concessionarias">
                 </div>
 
                 <div>
                     <label for="empregados">Empregados/Mão de Obra contratada</label>
-                    <input type="text" name="empregados" id="empregados">
+                    <input type="number" name="empregados" id="empregados">
                 </div>
 
                 <div>
                     <label for="imposto">Imposto, Taxa e Contribuições</label>
-                    <input type="text" name="imposto" id="imposto">
+                    <input type="number" name="imposto" id="imposto">
                 </div>
 
                 <div>
                     <label for="assistenciasocial">Assistência Social</label>
-                    <input type="text" name="assistenciasocial" id="assistenciasocial">
+                    <input type="number" name="assistenciasocial" id="assistenciasocial">
                 </div>
 
                 <div>
                     <label for="acoesevangelisticas">Ações Evangelísticas</label>
-                    <input type="text" name="acoesevangelisticas" id="acoesevangelisticas">
+                    <input type="number" name="acoesevangelisticas" id="acoesevangelisticas">
                 </div>
 
                 <div>
                     <label for="manutencao">Manutenção</label>
-                    <input type="text" name="manutencao" id="manutencao">
+                    <input type="number" name="manutencao" id="manutencao">
                 </div>
 
                 <div>
                     <label for="emprestimos">Empréstimo - Credor</label>
-                    <input type="text" name="emprestimos" id="emprestimos">
+                    <input type="number" name="emprestimos" id="emprestimos">
                 </div>
 
                 <div>
                     <label for="aquisicaodeativos">Aquisição de Ativos</label>
-                    <input type="text" name="aquisicaodeativos" id="aquisicaodeativos">
+                    <input type="number" name="aquisicaodeativos" id="aquisicaodeativos">
                 </div>
 
                 <div>
                     <label for="contribuicaoparaobarco">Contribuição para o Barco</label>
-                    <input type="text" name="contribuicaoparaobarco" id="contribuicaoparaobarco">
+                    <input type="number" name="contribuicaoparaobarco" id="contribuicaoparaobarco">
                 </div>
 
                 <div>
                     <label for="remessaparaasede">Remessa para a Igreja Sede</label>
-                    <input type="text" name="remessaparaasede" id="remessaparaasede">
+                    <input type="number" name="remessaparaasede" id="remessaparaasede">
                 </div>
 
                 <div>
                     <label for="outros">Outros</label>
-                    <input type="text" name="outros" id="outros">
+                    <input type="number" name="outros" id="outros">
                 </div>
 
                 <div>
                     <label for="ofertasdemissoes">Ofertas de Missões</label>
-                    <input type="text" name="ofertasdemissoes" id="ofertasdemissoes">
+                    <input type="number" name="ofertasdemissoes" id="ofertasdemissoes">
                 </div>
 
                 <div>
                     <label for="prebenda">Prebenda</label>
-                    <input type="text" name="prebenda" id="prebenda">
+                    <input type="number" name="prebenda" id="prebenda">
                 </div>
 
                 <div>
                     <label for="previdencia">Previdência</label>
-                    <input type="text" name="previdencia" id="previdencia">
+                    <input type="number" name="previdencia" id="previdencia">
                 </div>
 
                 <div>
                     <label for="verbacomplementar">Verba Complementar</label>
-                    <input type="text" name="verbacomplementar" id="verbacomplementar" onkeypress="imprimir()">
+                    <input type="number" name="verbacomplementar" id="verbacomplementar" onkeypress="imprimir()">
                 </div>               
             </div>
         </fieldset>

@@ -1,5 +1,8 @@
 var quantidadeofertas = 0
+var quantidadedizimos = 0
 var valorofertas = 0.00
+var valordizimos = 0.00
+
 
 function atualizardados(){
     obterDadosGerais()
@@ -8,14 +11,29 @@ function atualizardados(){
     obterSaidasOperacionaisAdm()
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Ofertas
 function adicionaroferta(){ 
     valordaoferta = parseFloat(document.getElementById("valordaoferta").value).toFixed(2)
 
     // Criação dos elementos - tags
-    li = criarLI()
-    div = criarDIV()
-    button = criarBUTTON()
-    h5 = criarH5()
+    li = criarLI(quantidadeofertas,'oferta')
+    div = criarDIV(quantidadeofertas)
+    button = criarBUTTON('removeroferta',quantidadeofertas,'oferta')
+    h5 = criarH5(quantidadeofertas,'oferta')
     texto = document.createTextNode(valordaoferta)
 
 
@@ -32,9 +50,6 @@ function adicionaroferta(){
 
     atualizardados()
 }
-
-
-
 function removeroferta(liId){
     valorpararemover = document.getElementById(liId+"h5").innerText
     valorofertas = parseFloat(valorofertas) - parseFloat(valorpararemover)
@@ -43,47 +58,76 @@ function removeroferta(liId){
     elemento = document.getElementById(liId);
     elemento.remove();
 }
+// Dizimos
+function adicionardizimo(){ 
+    valordodizimo = parseFloat(document.getElementById("valordodizimo").value).toFixed(2)
 
+    // Criação dos elementos - tags
+    li = criarLI(quantidadedizimos,'dizimo')
+    div = criarDIV(quantidadedizimos)
+    button = criarBUTTON('removerdizimo',quantidadedizimos,'dizimo')
+    h5 = criarH5(quantidadedizimos,'dizimo')
+    texto = document.createTextNode(valordodizimo)
+
+
+    elementoh5.appendChild(texto)
+    elementodiv.appendChild(elementobotao)
+    elementodiv.appendChild(elementoh5)
+    elementoli.appendChild(elementodiv)
+
+    document.getElementById("listadedizimos").appendChild(elementoli)
+
+    valordizimos = parseFloat(valordizimos)+parseFloat(valordodizimo)
+    console.log(valordizimos)
+    quantidadedizimos = parseInt(quantidadedizimos)+1
+
+    atualizardados()
+}
+function removerdizimo(liId){
+    valorpararemover = document.getElementById(liId+"h5").innerText
+    valordizimos = parseFloat(valordizimos) - parseFloat(valorpararemover)
+    atualizardados()
+
+    elemento = document.getElementById(liId);
+    elemento.remove();
+}
 
 // Funções para criação dos elementos
 
-function criarLI(){
+function criarLI(dado1,dado2){
     // Criação da li com os atributos
     elementoli = document.createElement("li")
     atributoidli = document.createAttribute("id")
-    atributoidli.value = "li"+parseInt(quantidadeofertas)
+    atributoidli.value = "li"+parseInt(dado1)+dado2
     elementoli.setAttributeNode(atributoidli)
 }
-function criarDIV(){
+function criarDIV(dado){
     // Criação da div com os atributos
     elementodiv = document.createElement("div")
     atributoiddiv = document.createAttribute("id")
-    atributoiddiv.value = "div"+parseInt(quantidadeofertas)
+    atributoiddiv.value = "div"+parseInt(dado)
     elementodiv.setAttributeNode(atributoiddiv)
 }
-function criarBUTTON(){
+function criarBUTTON(dado1,dado2,dado3){
     // Criação do button com os atributos
     elementobotao = document.createElement("input")
     atributoonclickbotao = document.createAttribute("onclick")
-    atributoonclickbotao.value="removeroferta('li"+parseInt(quantidadeofertas)+"')"
+    atributoonclickbotao.value= dado1+"('li"+parseInt(dado2)+dado3+"')"
     atributotypebotao = document.createAttribute("type")
     atributotypebotao.value="button"
     atributoidbotao = document.createAttribute("id")
-    atributoidbotao.value = "botao"+parseInt(quantidadeofertas)
+    atributoidbotao.value = "botao"+parseInt(dado2)
     elementobotao.setAttributeNode(atributoonclickbotao)
     elementobotao.setAttributeNode(atributotypebotao)
     elementobotao.setAttributeNode(atributoidbotao)
 }
-function criarH5(){
+function criarH5(dado1,dado2){
     // Criação da h5 com os atributos
     elementoh5 = document.createElement("h5")
     atributoidh5 = document.createAttribute("id")
-    atributoidh5.value = "li"+parseInt(quantidadeofertas)+"h5"
+    atributoidh5.value = "li"+parseInt(dado1)+dado2+"h5"
     elementoh5.setAttributeNode(atributoidh5)
 }
-
-
-
 
 // Funções de obtenção de dados
 function obterDadosGerais(){
@@ -122,11 +166,12 @@ function obterEntradasFinanceiras(){
     recursosdocrrn = parseFloat(recursosdocrrn)
     ofertademissoes = parseFloat(ofertademissoes)
 
-    somadasentradas = saldoanterior+emprestimocredor+recursosdaigrejasede+recursosdocrrn+ofertademissoes+valorofertas
+    somadasentradas = saldoanterior+emprestimocredor+recursosdaigrejasede+recursosdocrrn+ofertademissoes+valorofertas+valordizimos
     inputofertas = document.getElementById('ofertas').value=valorofertas.toFixed(2)
+    inputdizimos = document.getElementById('dizimos').value=valordizimos.toFixed(2)
     valortotaldeentradas = document.getElementById("valortotaldeentradas").innerHTML = somadasentradas.toFixed(2)
 
-    return saldoanterior,emprestimocredor,recursosdaigrejasede,recursosdocrrn,ofertademissoes,inputofertas
+    return saldoanterior,emprestimocredor,recursosdaigrejasede,recursosdocrrn,ofertademissoes,inputofertas,inputdizimos
 }
 function obterSaidasOperacionaisAdm(){
     // Saída Operacional Administrativa
@@ -147,8 +192,6 @@ function obterSaidasOperacionaisAdm(){
     previdencia = document.getElementById("previdencia").value
     verbacomplementar = document.getElementById("verbacomplementar").value    
 }
-
-
 
 // Funções para os Botões
 function abrirjanelaoferta(){
