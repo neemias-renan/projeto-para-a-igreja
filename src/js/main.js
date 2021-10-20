@@ -2,7 +2,6 @@ var quantidadeofertas = 0
 var quantidadedizimos = 0
 var valorofertas = 0.00
 var valordizimos = 0.00
-
 var entradas = 0.00
 var saidas = 0.00
 
@@ -21,26 +20,28 @@ function atualizardados(){
 function adicionaroferta(){ 
     valordaoferta = parseFloat(document.getElementById("valordaoferta").value).toFixed(2)
 
-    // Criação dos elementos - tags
-    li = criarLI(quantidadeofertas,'oferta')
-    div = criarDIV(quantidadeofertas)
-    button = criarBUTTON('removeroferta',quantidadeofertas,'oferta')
-    h5 = criarH5(quantidadeofertas,'oferta')
-    texto = document.createTextNode(valordaoferta)
+    if(valordaoferta!="NaN"){
+        // Criação dos elementos - tags
+        li = criarLI(quantidadeofertas,'oferta')
+        div = criarDIV(quantidadeofertas)
+        button = criarBUTTON('removeroferta',quantidadeofertas,'oferta')
+        h5 = criarH5(quantidadeofertas,'oferta')
+        texto = document.createTextNode(valordaoferta)
 
 
-    elementoh5.appendChild(texto)
-    elementodiv.appendChild(elementobotao)
-    elementodiv.appendChild(elementoh5)
-    elementoli.appendChild(elementodiv)
+        elementoh5.appendChild(texto)
+        elementodiv.appendChild(elementobotao)
+        elementodiv.appendChild(elementoh5)
+        elementoli.appendChild(elementodiv)
 
-    document.getElementById("listadeofertas").appendChild(elementoli)
+        document.getElementById("listadeofertas").appendChild(elementoli)
 
-    valorofertas = parseFloat(valorofertas)+parseFloat(valordaoferta)
-    
-    quantidadeofertas = parseInt(quantidadeofertas)+1
+        valorofertas = parseFloat(valorofertas)+parseFloat(valordaoferta)
+        
+        quantidadeofertas = parseInt(quantidadeofertas)+1
 
-    atualizardados()
+        atualizardados()
+    }
 }
 function removeroferta(liId){
     valorpararemover = document.getElementById(liId+"h5").innerText
@@ -54,26 +55,28 @@ function removeroferta(liId){
 function adicionardizimo(){ 
     valordodizimo = parseFloat(document.getElementById("valordodizimo").value).toFixed(2)
 
-    // Criação dos elementos - tags
-    li = criarLI(quantidadedizimos,'dizimo')
-    div = criarDIV(quantidadedizimos)
-    button = criarBUTTON('removerdizimo',quantidadedizimos,'dizimo')
-    h5 = criarH5(quantidadedizimos,'dizimo')
-    texto = document.createTextNode(valordodizimo)
+    if(valordodizimo!="NaN"){
+        // Criação dos elementos - tags
+        li = criarLI(quantidadedizimos,'dizimo')
+        div = criarDIV(quantidadedizimos)
+        button = criarBUTTON('removerdizimo',quantidadedizimos,'dizimo')
+        h5 = criarH5(quantidadedizimos,'dizimo')
+        texto = document.createTextNode(valordodizimo)
 
 
-    elementoh5.appendChild(texto)
-    elementodiv.appendChild(elementobotao)
-    elementodiv.appendChild(elementoh5)
-    elementoli.appendChild(elementodiv)
+        elementoh5.appendChild(texto)
+        elementodiv.appendChild(elementobotao)
+        elementodiv.appendChild(elementoh5)
+        elementoli.appendChild(elementodiv)
 
-    document.getElementById("listadedizimos").appendChild(elementoli)
+        document.getElementById("listadedizimos").appendChild(elementoli)
 
-    valordizimos = parseFloat(valordizimos)+parseFloat(valordodizimo)
-    console.log(valordizimos)
-    quantidadedizimos = parseInt(quantidadedizimos)+1
+        valordizimos = parseFloat(valordizimos)+parseFloat(valordodizimo)
+        console.log(valordizimos)
+        quantidadedizimos = parseInt(quantidadedizimos)+1
 
-    atualizardados()
+        atualizardados()
+    }
 }
 function removerdizimo(liId){
     valorpararemover = document.getElementById(liId+"h5").innerText
@@ -85,7 +88,6 @@ function removerdizimo(liId){
 }
 
 // Funções para criação dos elementos
-
 function criarLI(dado1,dado2){
     // Criação da li com os atributos
     elementoli = document.createElement("li")
@@ -98,7 +100,10 @@ function criarDIV(dado){
     elementodiv = document.createElement("div")
     atributoiddiv = document.createAttribute("id")
     atributoiddiv.value = "div"+parseInt(dado)
+    atributoclassdiv = document.createAttribute("class")
+    atributoclassdiv.value = "li_div"
     elementodiv.setAttributeNode(atributoiddiv)
+    elementodiv.setAttributeNode(atributoclassdiv)
 }
 function criarBUTTON(dado1,dado2,dado3){
     // Criação do button com os atributos
@@ -109,9 +114,12 @@ function criarBUTTON(dado1,dado2,dado3){
     atributotypebotao.value="button"
     atributoidbotao = document.createAttribute("id")
     atributoidbotao.value = "botao"+parseInt(dado2)
+    atributoclassbotao = document.createAttribute("class")
+    atributoclassbotao.value = "botao"
     elementobotao.setAttributeNode(atributoonclickbotao)
     elementobotao.setAttributeNode(atributotypebotao)
     elementobotao.setAttributeNode(atributoidbotao)
+    elementobotao.setAttributeNode(atributoclassbotao)
 }
 function criarH5(dado1,dado2){
     // Criação da h5 com os atributos
@@ -159,10 +167,13 @@ function obterEntradasFinanceiras(){
     ofertademissoes = parseFloat(ofertademissoes)
 
     somadeentradas = saldoanterior+emprestimocredor+recursosdaigrejasede+recursosdocrrn+ofertademissoes+valorofertas+valordizimos
+    somasubtotaldeentradas = emprestimocredor+valordizimos+valorofertas+ofertademissoes
+
+
     inputofertas = document.getElementById('ofertas').value=valorofertas.toFixed(2)
     inputdizimos = document.getElementById('dizimos').value=valordizimos.toFixed(2)
     valortotaldeentradas = document.getElementById("valortotaldeentradas").innerHTML = somadeentradas.toFixed(2)
-    
+    subtotaldeentradas = document.getElementById("subtotaldeentradas").innerHTML=somasubtotaldeentradas.toFixed(2)
     document.getElementById("totaldasentradas").value = somadeentradas.toFixed(2)
 
     entradas = somadeentradas
@@ -182,7 +193,7 @@ function obterSaidasOperacionaisAdm(){
     remessaparaasede = document.getElementById("remessaparaasede").value
     outros = document.getElementById("outros").value
     ofertasdemissoes = document.getElementById("ofertasdemissoes").value
-    prebenda = document.getElementById("prebenda").value
+    prebenda = document.getElementById("prebenda").value = (entradas/2).toFixed(2)
     previdencia = document.getElementById("previdencia").value
     verbacomplementar = document.getElementById("verbacomplementar").value
 
@@ -230,14 +241,16 @@ function obterSaidasOperacionaisAdm(){
 // Funções para os Botões
 function abrirjanelaoferta(){
     document.getElementById("janelaoferta").style.display = "block";
+    document.getElementById("janeladizimo").style.display = "none";
 }
 function fecharjanelaoferta(){
     document.getElementById("janelaoferta").style.display = "none";
 }
-
 function abrirjaneladizimo(){
     document.getElementById("janeladizimo").style.display = "block";
+    document.getElementById("janelaoferta").style.display = "none";
 }
 function fecharjaneladizimo(){
     document.getElementById("janeladizimo").style.display = "none";
 }
+
